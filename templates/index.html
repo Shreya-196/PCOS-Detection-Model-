@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PCOS Detection - Frontend</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #D4D4F7;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            margin: 0; /* Remove default margin */
+        }
+
+        .content {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #017c77;
+            margin-bottom: 30px;
+        }
+
+        .btn-take-test {
+            font-size: 1.5rem;
+            background-color: #017c77;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-take-test:hover {
+            background-color: #00675c;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: #017c77; /* Darker background for footer */
+            color: #fff; /* White text color */
+            padding: 20px; /* Padding for footer */
+            text-align: center; /* Center text */
+        }
+
+        .footer a {
+            color: #fff; /* White links */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .footer a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1.1rem;
+            color: #017c77;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #00675c;
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .test {
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            flex-direction: column; /* Stack content vertically */
+        }
+
+        .features {
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            height: 100%;
+            width: 80%; /* Set a width for the features card */
+            text-align: center; /* Center text in the features card */
+            margin-left: auto; /* Center the features section */
+            margin-right: auto; /* Center the features section */
+            justify-content: space-between;
+        }
+
+        .features h2 {
+            color: #017c77;
+        }
+
+        .features ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+        }
+
+        .card {
+            margin: 10px; /* Add margin to cards */
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            height: 100%; /* Make cards take full height */
+            background-color: #f8f9fa; /* Light gray background */
+            transition: transform 0.3s, box-shadow  0.3s; /* Smooth transition for hover effect */
+            max-height: 450px; /* Set a maximum height for the cards */
+        }
+
+        .card-body {
+            flex: 1; /* Allow card body to grow */
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            justify-content: space-between; /* Space out content */
+        }
+
+        .card img {
+            max-width: 100%; /* Make images responsive */
+            height: 150px; /* Set a fixed height for images */
+            object-fit: cover; /* Maintain aspect ratio and cover the area */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Move up on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+        .why{
+            background-color: #f8f9fa;
+            /* margin: px; */
+            max-width: 97%;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav .nav-link {
+                font-size: 1rem;
+            }
+
+            .btn-take-test {
+                font-size: 1.3rem;
+                padding: 12px 25px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">FemFlare</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Explore more about PCOS and its effects—take our free test to discover if you might be at risk">
+                            About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Take the test -->
+    <div class="container-fluid test">
+        <div class="col-md-12 content">
+            <h1>Welcome to the PCOS Detection Test</h1>
+            <p>Check your symptoms and find out if you're at risk for PCOS.</p>
+            <button class="btn btn-take-test" onclick="window.location.href = '/predict';">Take Test</button>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container-fluid features">
+        <div class="container-sm why">
+            <h2>Why Take the Test?</h2>
+            <p>This test can help you understand your symptoms better and provide insights into your health.</p>
+            <p>Here are some reasons to consider taking the test:</p>
+            <ul>
+                <li>Identify early signs of PCOS.</li>
+                <li>Get personalized recommendations.</li>
+                <li>Take control of your health.</li>
+            </ul>
+        </div>
+
+        <div class="container-sm">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-center mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">PCOS and Depression: Understanding the Emotional Impact</h5>
+                            <p class="card-text">The hormonal imbalances, physical symptoms, and challenges associated with PCOS can contribute significantly to mental health issues, particularly depression.</p>
+                            <a href="https://shorturl.at/uwshe" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center mb-3">
+                        <img src="../static/images/4.png" alt="Hope Over Infertility" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Hope Over Infertility</h5>
+                            <p class="card-text">Finding strength in every step toward parenthood.</p>
+                            <a href="https://shorturl.at/RoP6a" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center mb-3">
+                        <img src="../static/images/5.png" alt="The Link Between PCOS and Diabetes" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">The Link Between PCOS and Diabetes</h5>
+                            <p class="card-text">Insulin resistance in PCOS increases the risk of Type 2 diabetes.</p>
+                            <a href="https://shorturl.at/G6iFU" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 PCOS Detection Project. All rights reserved.</p>
+        <p>Disclaimer: This website is for informational purposes only and is not a substitute for professional medical advice. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+        <p>
+            Follow us: 
+            <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+        </p>
+    </div>
+
+    <!-- Updated Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Custom JS -->
+    <script src="../static/js/index_js.js"></script>
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl);
+});
+    </script>
+
+</body>
+
+</html>
