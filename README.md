@@ -43,3 +43,7 @@ Final Decision: Merges predictions from both models for a comprehensive diagnosi
 🚀 Deployment
 
 The project is deployed using Vercel/Heroku.
+
+GUI:
+![image](https://github.com/user-attachments/assets/e0bd45c1-a330-4140-9af7-66d4bbe7ff5d)
+
